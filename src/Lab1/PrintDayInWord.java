@@ -1,3 +1,5 @@
+package Lab1;
+
 public class PrintDayInWord {
     public static void main(String[] args) {
         int n = 3;

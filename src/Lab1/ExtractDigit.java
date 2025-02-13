@@ -1,3 +1,5 @@
+package Lab1;
+
 public class ExtractDigit {
     public static void main(String[] args) {
         int n = 15432;

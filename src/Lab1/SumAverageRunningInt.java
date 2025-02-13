@@ -1,3 +1,5 @@
+package Lab1;
+
 public class SumAverageRunningInt {
     public static void main(String[] args) {
         int SumOdd = 0;

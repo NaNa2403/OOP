@@ -1,4 +1,4 @@
-package Week1;
+package Lab1;
 
 public class ComputePi {
     public static void main(String[] args) {
