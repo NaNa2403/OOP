@@ -147,7 +147,7 @@ public class Ex5 {
     public static void tribonacciInt() {
         final int MAX_INT = Integer.MAX_VALUE;
 
-        int f0 = 1, f1 = 1, f2 = 2 ;
+        int f0 = 1, f1 = 1, f2 = 2;
 
         System.out.println("F(0) = " + f0);
         System.out.println("F(1) = " + f1);
@@ -189,27 +189,26 @@ public class Ex5 {
             ;
         }
 
-            int decimalValue = Integer.parseInt(in, inRadix);
-            if (outRadix == 10) {
-                return String.valueOf(decimalValue);
-            }
-
-            StringBuilder result = new StringBuilder();
-            if (decimalValue == 0) {
-                return "0";
-            }
-            while (decimalValue > 0) {
-                int remainder = decimalValue % outRadix;
-                if (remainder < 10) {
-                    result.insert(0, (char) ('0' + remainder));
-                } else {
-                    result.insert(0, (char) ('A' + remainder - 10));
-                }
-                decimalValue /= outRadix;
-            }
-
-            return result.toString();
+        if (outRadix == 10) {
+            return String.valueOf(decimal);
         }
+
+        StringBuilder result = new StringBuilder();
+        if (decimal == 0) {
+            return "0";
+        }
+        while (decimal > 0) {
+            int remainder = decimal % outRadix;
+            if (remainder < 10) {
+                result.insert(0, (char) ('0' + remainder));
+            } else {
+                result.insert(0, (char) ('A' + remainder - 10));
+            }
+            decimal /= outRadix;
+        }
+
+        return result.toString();
+    }
 
     public static void testNumberConversion(Scanner sc) {
         System.out.print("Enter a number and radix: ");
@@ -223,14 +222,14 @@ public class Ex5 {
 
         String result = toRadix(inputNumber.toLowerCase(), inRadix, outRadix);
 
-        System.out.printf("%s in radix %d is %s in radix %d",inputNumber, inRadix, result, outRadix);
+        System.out.printf("%s in radix %d is %s in radix %d", inputNumber, inRadix, result, outRadix);
     }
 
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int choice;
-        do{
+        do {
             System.out.println("\n-------------Menu-----------");
             System.out.println("1. Trigonometric Series");
             System.out.println("2. Exponential Series");
@@ -242,7 +241,7 @@ public class Ex5 {
             System.out.println("8. Exit");
             choice = sc.nextInt();
 
-            switch (choice){
+            switch (choice) {
                 case 1:
                     testTrigonometric(sc);
                     break;
@@ -269,6 +268,6 @@ public class Ex5 {
                 default:
                     System.out.println("Invalid number");
             }
-        }while (choice != 8);
+        } while (choice != 8);
     }
 }
