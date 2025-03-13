@@ -101,7 +101,7 @@ public class Ex2 {
     static String decimalToHexadecimal(int positiveInteger){
         StringBuilder sb = new StringBuilder();
         final String[] hexDigits = {"0", "1", "2", "3","4","5","6","7","8",
-                "9","A","B","C","D","E","F"};;
+                "9","A","B","C","D","E","F"};
         if (positiveInteger == 0) {
             return "0";
         }

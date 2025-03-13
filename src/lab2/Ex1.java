@@ -39,7 +39,6 @@ public class Ex1 {
     static void testCountVowelsDigits(String inStr) {
         System.out.printf("Number of vowels: %d (%f%%)%n", countVowels(inStr.toLowerCase()), (double) countVowels(inStr.toLowerCase()) / inStr.length());
         System.out.printf("Number of digits: %d (%f%%)%n", countDigits(inStr.toLowerCase()), (double) countDigits(inStr.toLowerCase()) / inStr.length());
-        ;
 
     }
 
@@ -98,7 +97,6 @@ public class Ex1 {
 
     static void testPhoneKeyPad(String inStr) {
         System.out.printf("Phone key pad %s%n", phoneKeyPad(inStr.toLowerCase()));
-        ;
     }
 
     static String cipherCaesarCode(String inStr) {
