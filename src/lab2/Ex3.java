@@ -1,9 +1,9 @@
-package Lab2;
+package lab2;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ex3 {
+public class Ex3 {
     public static int exponent(int base, int exp){
         int result = 1;
         for (int i = 0; i<exp ; i++){

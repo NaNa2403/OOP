@@ -1,8 +1,8 @@
-package Lab2;
+package lab2;
 
 import java.util.Scanner;
 
-public class ex1 {
+public class Ex1 {
 
     static String reverseString(String inStr) {
         StringBuilder sb = new StringBuilder();

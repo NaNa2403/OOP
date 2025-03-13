@@ -1,9 +1,8 @@
-package Lab2;
+package lab2;
 
-import java.util.Locale;
 import java.util.Scanner;
 
-public class ex2 {
+public class Ex2 {
     static int[] createArray(Scanner sc){
         System.out.print("Enter the number of items :");
         int numItems = sc.nextInt();

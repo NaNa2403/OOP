@@ -1,4 +1,4 @@
-package Lab4.HW2;
+package lab4.HW2;
 
 import java.util.Scanner;
 
