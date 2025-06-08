@@ -1,76 +1,99 @@
 package hus.oop.integration;
 
+import java.util.Arrays;
+
 public class MyArrayPolynomial extends MyAbstractPolynomial {
-    private static final int DEFAULT_CAPACITY = 8;
-    private double[] coefficents;
-    private int size;
+    private double[] coefficients;
 
-    /**
-     * Khởi tạo dữ liệu mặc định.
-     */
     public MyArrayPolynomial() {
-        /* TODO */
+        this.coefficients = new double[]{0.0};
+    }
+
+    private MyArrayPolynomial(double[] coefficients) {
+        this.coefficients = coefficients;
     }
 
     @Override
-    public double coefficient(int index) {
-        /* TODO */
+    public double coefficient(int degree) {
+        return (degree >= 0 && degree < coefficients.length) ? coefficients[degree] : 0.0;
     }
 
     @Override
-    public double[] coefficients() {
-        /* TODO */
-    }
-
-    @Override
-    public MyArrayPolynomial append(double coefficient) {
-        /* TODO */
-    }
-
-    @Override
-    public MyArrayPolynomial add(double coefficient, int index) {
-        /* TODO */
-    }
-
-    @Override
-    public MyArrayPolynomial set(double coefficient, int index) {
-        /* TODO */
+    public double[] getCoefficients() {
+        return Arrays.copyOf(coefficients, coefficients.length);
     }
 
     @Override
     public int degree() {
-        /* TODO */
+        for (int i = coefficients.length - 1; i >= 0; i--) {
+            if (coefficients[i] != 0.0) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public MyPolynomial append(double coefficient) {
+        double[] newCoeffs = Arrays.copyOf(this.coefficients, this.coefficients.length + 1);
+        newCoeffs[newCoeffs.length - 1] = coefficient;
+        this.coefficients = newCoeffs;
+        return this;
+    }
+
+    @Override
+    public MyPolynomial set(double coefficient, int degree) {
+        if (degree < 0) throw new IllegalArgumentException("Degree cannot be negative.");
+        if (degree >= this.coefficients.length) {
+            this.coefficients = Arrays.copyOf(this.coefficients, degree + 1);
+        }
+        this.coefficients[degree] = coefficient;
+        return this;
     }
 
     @Override
     public double evaluate(double x) {
-        /* TODO */
+        double value = 0.0;
+        for (int i = this.degree(); i >= 0; i--) {
+            value = value * x + this.coefficient(i);
+        }
+        return value;
     }
 
     @Override
-    public MyArrayPolynomial derivative() {
-        /* TODO */
+    public MyPolynomial derivative() {
+        return new MyArrayPolynomial(differentiate());
     }
 
     @Override
-    public MyArrayPolynomial plus(MyPolynomial right) {
-        /* TODO */
+    public MyPolynomial plus(MyPolynomial another) {
+        int resultDegree = Math.max(this.degree(), another.degree());
+        double[] resultCoeffs = new double[resultDegree + 1];
+        for (int i = 0; i <= resultDegree; i++) {
+            resultCoeffs[i] = this.coefficient(i) + another.coefficient(i);
+        }
+        return new MyArrayPolynomial(resultCoeffs);
     }
 
     @Override
-    public MyArrayPolynomial minus(MyPolynomial right) {
-        /* TODO */
+    public MyPolynomial minus(MyPolynomial another) {
+        int resultDegree = Math.max(this.degree(), another.degree());
+        double[] resultCoeffs = new double[resultDegree + 1];
+        for (int i = 0; i <= resultDegree; i++) {
+            resultCoeffs[i] = this.coefficient(i) - another.coefficient(i);
+        }
+        return new MyArrayPolynomial(resultCoeffs);
     }
 
     @Override
-    public MyArrayPolynomial multiply(MyPolynomial right) {
-        /* TODO */
-    }
-
-    /**
-     * Tăng kích thước mảng lên gấp đôi để lưu đa thức khi cần thiết.
-     */
-    private void allocateMore() {
-        /* TODO */
+    public MyPolynomial multiply(MyPolynomial another) {
+        int resultDegree = this.degree() + another.degree();
+        double[] resultCoeffs = new double[resultDegree + 1];
+        for (int i = 0; i <= this.degree(); i++) {
+            for (int j = 0; j <= another.degree(); j++) {
+                resultCoeffs[i + j] += this.coefficient(i) * another.coefficient(j);
+            }
+        }
+        return new MyArrayPolynomial(resultCoeffs);
     }
 }
